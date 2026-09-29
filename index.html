@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Srushti Store | E-Commerce Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #6c5ce7;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover {
+            color: #ffeaa7;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 500px;
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #019875;
+        }
+
+        /* SECTION */
+        .section {
+            padding: 60px 7%;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 32px;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category .icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            border-radius: 10px;
+            background: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 75px;
+        }
+
+        .product h3 {
+            margin: 15px 0 8px;
+        }
+
+        .rating {
+            color: #f39c12;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #e84393;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .product button {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 7px;
+            background: #6c5ce7;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .product button:hover {
+            background: #4834d4;
+        }
+
+        /* SEARCH */
+        .search-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            width: 80%;
+            max-width: 600px;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* CART */
+        .cart-box {
+            background: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .remove-btn {
+            background: #d63031;
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+        .contact {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        .contact textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer p {
+            margin: 8px;
+        }
+
+        /* MOBILE */
+        @media(max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        🛍️ Srushti Store
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#cart">🛒 Cart (<span id="cartCount">0</span>)</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <h1>Welcome to Srushti Store 🛍️</h1>
+
+        <p>
+            Shop your favorite products at amazing prices.
+        </p>
+
+        <a href="#products" class="btn">
+            Shop Now
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+    <h2>Shop By Category</h2>
+
+    <div class="categories">
+
+        <div class="category">
+            <div class="icon">👗</div>
+            <h3>Fashion</h3>
+            <p>Latest fashion products</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">📱</div>
+            <h3>Electronics</h3>
+            <p>Smart electronic products</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">💄</div>
+            <h3>Beauty</h3>
+            <p>Beauty & personal care</p>
+        </div>
+
+        <div class="category">
+            <div class="icon">🏠</div>
+            <h3>Home</h3>
+            <p>Home essentials</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+    <h2>Our Products</h2>
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search products..."
+            onkeyup="searchProducts()"
+        >
+
+    </div>
+
+
+    <div class="products" id="productList">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                👕
+            </div>
+
+            <h3>Premium T-Shirt</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <div class="price">
+                ₹499
+            </div>
+
+            <button onclick="addToCart('Premium T-Shirt',499)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                👟
+            </div>
+
+            <h3>Stylish Shoes</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐☆
+            </div>
+
+            <div class="price">
+                ₹1,299
+            </div>
+
+            <button onclick="addToCart('Stylish Shoes',1299)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                🎧
+            </div>
+
+            <h3>Wireless Headphones</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <div class="price">
+                ₹999
+            </div>
+
+            <button onclick="addToCart('Wireless Headphones',999)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                ⌚
+            </div>
+
+            <h3>Smart Watch</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐☆
+            </div>
+
+            <div class="price">
+                ₹1,499
+            </div>
+
+            <button onclick="addToCart('Smart Watch',1499)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT 5 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                👜
+            </div>
+
+            <h3>Women's Handbag</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <div class="price">
+                ₹799
+            </div>
+
+            <button onclick="addToCart('Women Handbag',799)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCT 6 -->
+
+        <div class="product">
+
+            <div class="product-image">
+                📱
+            </div>
+
+            <h3>Smart Phone</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <div class="price">
+                ₹14,999
+            </div>
+
+            <button onclick="addToCart('Smart Phone',14999)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CART -->
+
+<section class="section" id="cart">
+
+    <h2>🛒 Shopping Cart</h2>
+
+    <div class="cart-box">
+
+        <div id="cartItems">
+
+            <p>Your cart is empty.</p>
+
+        </div>
+
+        <div class="total">
+
+            Total: ₹<span id="cartTotal">0</span>
+
+        </div>
+
+        <br>
+
+        <button
+            class="btn"
+            onclick="checkout()"
+        >
+            Checkout
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="section" id="contact">
+
+    <h2>Contact Us</h2>
+
+    <div class="contact">
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+        >
+
+
+        <label>Message</label>
+
+        <textarea
+            id="message"
+            placeholder="Write your message"
+        ></textarea>
+
+
+        <button
+            class="btn"
+            onclick="sendMessage()"
+        >
+            Send Message
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h3>🛍️ Srushti Store</h3>
+
+    <p>Your one-stop online shopping website.</p>
+
+    <p>🚚 Fast Delivery | 🔒 Secure Shopping | ⭐ Quality Products</p>
+
+    <p>© 2026 Srushti Store. All Rights Reserved.</p>
+
+</footer>
+
+
+<script>
+
+    /* CART */
+
+    let cart = [];
+
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        updateCart();
+
+        alert(name + " added to cart! 🛒");
+    }
+
+
+    function updateCart() {
+
+        let cartItems = document.getElementById("cartItems");
+
+        let cartCount = document.getElementById("cartCount");
+
+        let cartTotal = document.getElementById("cartTotal");
+
+
+        cartCount.innerText = cart.length;
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML =
+                "<p>Your cart is empty.</p>";
+
+            cartTotal.innerText = "0";
+
+            return;
+        }
+
+
+        let total = 0;
+
+        cartItems.innerHTML = "";
+
+
+        cart.forEach(function(item, index) {
+
+            total += item.price;
+
+
+            cartItems.innerHTML += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <br>
+
+                        ₹${item.price}
+
+                    </div>
+
+
+                    <button
+                        class="remove-btn"
+                        onclick="removeItem(${index})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+
+        cartTotal.innerText = total;
+
+    }
+
+
+    function removeItem(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+
+    }
+
+
+    /* SEARCH */
+
+    function searchProducts() {
+
+        let input =
+            document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
+
+
+        let products =
+            document
+            .querySelectorAll(".product");
+
+
+        products.forEach(function(product) {
+
+            let name =
+                product
+                .querySelector("h3")
+                .innerText
+                .toLowerCase();
+
+
+            if (name.includes(input)) {
+
+                product.style.display = "block";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* CHECKOUT */
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty! 🛒");
+
+            return;
+
+        }
+
+
+        let total = cart.reduce(
+            (sum, item) => sum + item.price,
+            0
+        );
+
+
+        let name =
+            prompt("Enter your name:");
+
+        if (!name) return;
+
+
+        let address =
+            prompt("Enter your delivery address:");
+
+        if (!address) return;
+
+
+        alert(
+            "Order placed successfully! 🎉\n\n" +
+            "Customer: " + name +
+            "\nTotal: ₹" + total +
+            "\nAddress: " + address
+        );
+
+
+        cart = [];
+
+        updateCart();
+
+    }
+
+
+    /* CONTACT */
+
+    function sendMessage() {
+
+        let name =
+            document.getElementById("name").value;
+
+        let email =
+            document.getElementById("email").value;
+
+        let message =
+            document.getElementById("message").value;
+
+
+        if (
+            name === "" ||
+            email === "" ||
+            message === ""
+        ) {
+
+            alert("Please fill all fields.");
+
+            return;
+
+        }
+
+
+        alert(
+            "Thank you " +
+            name +
+            "! Your message has been sent. 💜"
+        );
+
+
+        document.getElementById("name").value = "";
+
+        document.getElementById("email").value = "";
+
+        document.getElementById("message").value = "";
+
+    }
+
+</script>
+
+</body>
+</html>
